@@ -1,5 +1,6 @@
 import type { Track } from '../../dal/types'
 import { useTracks } from '../../bll/useTracks'
+import { TrackItem } from '../TrackItem'
 
 interface Props {
   selectedTrackId: string | null
@@ -15,19 +16,16 @@ export const Playlist = ({ selectedTrackId, onTrackSelect }: Props) => {
       {tracks?.length === 0 && <p>No tracks</p>}
 
       <ul>
-        {tracks?.map((track: Track) => (
-          <li
-            key={track.id}
-            style={{ border: `1px solid ${track.id === selectedTrackId ? 'orange' : 'transparent'}` }}
-            onClick={() => onTrackSelect(track.id)}
-          >
-            <div>{track.attributes.title}</div>
-            <audio
-              src={track.attributes.attachments[0].url}
-              controls
-            ></audio>
-          </li>
-        ))}
+        {tracks?.map((track: Track) => {
+          return (
+            <TrackItem
+              key={track.id}
+              track={track}
+              isSelected={track.id === selectedTrackId}
+              onTrackSelect={onTrackSelect}
+            />
+          )
+        })}
       </ul>
     </>
   )
