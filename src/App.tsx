@@ -1,17 +1,30 @@
-import { useState } from 'react'
 import './App.css'
 
-export const App = () => {
-  const [count, setCount] = useState(0)
+const tracks = [
+  {
+    id: 1,
+    title: 'MusicFun Soundtrack',
+    url: 'https://musicfun.it-incubator.app/api/samurai-way-soundtrack.mp3',
+  },
+  {
+    id: 2,
+    title: 'MusicFun Soundtrack – Instrumental',
+    url: 'https://musicfun.it-incubator.app/api/samurai-way-soundtrack-instrumental.mp3',
+  },
+]
 
+export const App = () => {
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <h1>MusicFun Player</h1>
+      <ul>
+        {tracks.map((track) => (
+          <li key={track.id}>
+            <div>{track.title}</div>
+            <audio src={track.url} controls></audio>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
