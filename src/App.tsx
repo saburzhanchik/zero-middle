@@ -27,8 +27,8 @@ type TrackDetailsResource = {
 
 export const App = () => {
   const [tracks, setTracks] = useState<Track[] | null>(null)
-  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
   const [selectedTrack, setSelectedTrack] = useState<TrackDetailsResource | null>(null)
+  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
