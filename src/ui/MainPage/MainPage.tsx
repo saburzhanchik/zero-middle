@@ -2,7 +2,7 @@ import { PageTitle } from '../PageTitle'
 import { ResetButton } from '../ResetButton'
 import { Playlist } from '../Playlist'
 import { TrackDetails } from '../TrackDetails'
-import { useTrackSelection } from '../../hooks/useTrackSelection'
+import { useTrackSelection } from '../../bll/useTrackSelection'
 
 export const MainPage = () => {
   const {

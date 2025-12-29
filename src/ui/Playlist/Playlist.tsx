@@ -1,5 +1,5 @@
-import type { Track } from '../../types'
-import { useTracks } from '../../hooks/useTracks'
+import type { Track } from '../../dal/types'
+import { useTracks } from '../../bll/useTracks'
 
 interface Props {
   selectedTrackId: string | null

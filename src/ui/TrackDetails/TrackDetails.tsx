@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import type { TrackDetailsResource } from '../../types'
-import { getTrack } from '../../api'
+import type { TrackDetailsResource } from '../../dal/types'
+import { getTrack } from '../../dal/api'
 
 interface Props {
   selectedTrackId: string | null

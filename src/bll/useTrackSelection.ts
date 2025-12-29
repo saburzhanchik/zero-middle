@@ -1,4 +1,4 @@
-import type { TrackDetailsResource } from '../types'
+import type { TrackDetailsResource } from '../dal/types'
 import { useState } from 'react'
 
 export const useTrackSelection = () => {
