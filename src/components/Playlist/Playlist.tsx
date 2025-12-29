@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
 import type { Track } from '../../types'
-import { getTracks } from '../../api'
+import { useTracks } from '../../hooks/useTracks'
 
 interface Props {
   selectedTrackId: string | null
@@ -8,11 +7,7 @@ interface Props {
 }
 
 export const Playlist = ({ selectedTrackId, onTrackSelect }: Props) => {
-  const [tracks, setTracks] = useState<Track[] | null>(null)
-
-  useEffect(() => {
-    getTracks().then((json) => setTracks(json.data))
-  }, [])
+  const { tracks } = useTracks()
 
   return (
     <>
