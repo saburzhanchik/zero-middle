@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import type { TrackDetailsResource } from '../../types'
+import { getTrack } from '../../api'
 
 interface Props {
   selectedTrackId: string | null
@@ -10,13 +11,7 @@ interface Props {
 export const TrackDetails = ({ selectedTrackId, selectedTrack, setSelectedTrack }: Props) => {
   useEffect(() => {
     if (!selectedTrackId) return
-
-    fetch(`https://musicfun.it-incubator.app/api/1.0/playlists/tracks/${selectedTrackId}`, {
-      headers: {
-        'api-key': import.meta.env.VITE_API_KEY,
-      },
-    }).then((res) => res.json())
-      .then((json) => setSelectedTrack(json.data))
+    getTrack(selectedTrackId).then((json) => setSelectedTrack(json.data))
   }, [selectedTrackId])
 
   return (

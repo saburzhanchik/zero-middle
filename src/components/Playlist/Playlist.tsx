@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Track } from '../../types'
+import { getTracks } from '../../api'
 
 interface Props {
   selectedTrackId: string | null
@@ -10,12 +11,7 @@ export const Playlist = ({ selectedTrackId, onTrackSelect }: Props) => {
   const [tracks, setTracks] = useState<Track[] | null>(null)
 
   useEffect(() => {
-    fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
-      headers: {
-        'api-key': import.meta.env.VITE_API_KEY,
-      },
-    }).then((res) => res.json())
-      .then((json) => setTracks(json.data))
+    getTracks().then((json) => setTracks(json.data))
   }, [])
 
   return (
