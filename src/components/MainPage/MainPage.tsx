@@ -2,19 +2,16 @@ import { PageTitle } from '../PageTitle'
 import { ResetButton } from '../ResetButton'
 import { Playlist } from '../Playlist'
 import { TrackDetails } from '../TrackDetails'
-import { useState } from 'react'
-import type { TrackDetailsResource } from '../../types'
+import { useTrackSelection } from '../../hooks/useTrackSelection'
 
 export const MainPage = () => {
-  const [selectedTrack, setSelectedTrack] = useState<TrackDetailsResource | null>(null)
-  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
-
-  const handleTrackSelect = (trackId: string) => setSelectedTrackId(trackId)
-
-  const handleReset = () => {
-    setSelectedTrackId(null)
-    setSelectedTrack(null)
-  }
+  const {
+    selectedTrack,
+    selectedTrackId,
+    handleTrackSelect,
+    handleReset,
+    setSelectedTrack,
+  } = useTrackSelection()
 
   return (
     <main>
