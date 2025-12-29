@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import type { TrackDetailsResource } from '../../dal/types'
 import { getTrack } from '../../dal/api'
 import styles from './TrackDetails.module.css'
+import clsx from 'clsx'
 
 interface Props {
   selectedTrackId: string | null
@@ -22,7 +23,13 @@ export const TrackDetails = ({ selectedTrackId, selectedTrack, setSelectedTrack 
       {selectedTrackId && !selectedTrack && <p>Loading...</p>}
       {selectedTrack && (
         <>
-          <div className={`${selectedTrack.id !== selectedTrackId && styles.inactive}`}>
+          <div
+            className={
+              clsx({
+                [styles.inactive]: selectedTrack.id !== selectedTrackId,
+              })
+            }
+          >
             <h3>{selectedTrack.attributes.title}</h3>
             <div>
               <h4>Lyrics</h4>
