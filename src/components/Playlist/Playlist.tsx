@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import type { Track } from '../../types'
 
-export const Playlist = () => {
+interface Props {
+  selectedTrackId: string | null
+  onTrackSelect: (trackId: string) => void
+}
+
+export const Playlist = ({ selectedTrackId, onTrackSelect }: Props) => {
   const [tracks, setTracks] = useState<Track[] | null>(null)
-  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
@@ -24,7 +28,7 @@ export const Playlist = () => {
           <li
             key={track.id}
             style={{ border: `1px solid ${track.id === selectedTrackId ? 'orange' : 'transparent'}` }}
-            onClick={() => setSelectedTrackId(track.id)}
+            onClick={() => onTrackSelect(track.id)}
           >
             <div>{track.attributes.title}</div>
             <audio

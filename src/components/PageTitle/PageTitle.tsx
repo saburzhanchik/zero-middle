@@ -1,3 +1,7 @@
-export const PageTitle = () => {
-  return <h1>MusicFun Player</h1>
+interface Props {
+  value: string
+}
+
+export const PageTitle = ({ value }: Props) => {
+  return <h1>{value}</h1>
 }

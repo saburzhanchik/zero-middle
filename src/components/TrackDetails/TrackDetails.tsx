@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 import type { TrackDetailsResource } from '../../types'
 
-export const TrackDetails = () => {
+interface Props {
+  selectedTrackId: string | null
+}
+
+export const TrackDetails = ({ selectedTrackId }: Props) => {
   const [selectedTrack, setSelectedTrack] = useState<TrackDetailsResource | null>(null)
-  const [selectedTrackId, _] = useState<string | null>(null)
 
   useEffect(() => {
     if (!selectedTrackId) return
