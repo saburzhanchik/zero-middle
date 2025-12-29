@@ -1,12 +1,18 @@
-import { useState } from 'react'
+interface Props {
+  onReset: () => void
+  setSelectedTrack: () => void
+}
 
-export const ResetButton = () => {
-  const [_, setSelectedTrackId] = useState<string | null>(null)
+export const ResetButton = ({ onReset, setSelectedTrack }: Props) => {
+  const handleReset = () => {
+    onReset()
+    setSelectedTrack()
+  }
 
   return (
     <button
       type="button"
-      onClick={() => setSelectedTrackId(null)}
+      onClick={handleReset}
     >
       Reset selection
     </button>

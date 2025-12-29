@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import type { TrackDetailsResource } from '../../types'
 
 interface Props {
   selectedTrackId: string | null
+  selectedTrack: TrackDetailsResource | null
+  setSelectedTrack: (data: TrackDetailsResource) => void
 }
 
-export const TrackDetails = ({ selectedTrackId }: Props) => {
-  const [selectedTrack, setSelectedTrack] = useState<TrackDetailsResource | null>(null)
-
+export const TrackDetails = ({ selectedTrackId, selectedTrack, setSelectedTrack }: Props) => {
   useEffect(() => {
     if (!selectedTrackId) return
 
