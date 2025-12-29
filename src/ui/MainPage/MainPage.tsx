@@ -3,6 +3,7 @@ import { ResetButton } from '../ResetButton'
 import { Playlist } from '../Playlist'
 import { TrackDetails } from '../TrackDetails'
 import { useTrackSelection } from '../../bll/useTrackSelection'
+import styles from './MainPage.module.css'
 
 export const MainPage = () => {
   const {
@@ -20,7 +21,7 @@ export const MainPage = () => {
         onReset={handleReset}
         setSelectedTrack={handleReset}
       />
-      <div style={{ display: 'flex', columnGap: '30px' }}>
+      <div className={styles.mainContent}>
         <Playlist
           selectedTrackId={selectedTrackId}
           onTrackSelect={handleTrackSelect}

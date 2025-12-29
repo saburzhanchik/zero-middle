@@ -1,0 +1,4 @@
+.inactive {
+  color: #777;
+  transition: color .2s ease;
+}

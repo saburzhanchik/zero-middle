@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import type { TrackDetailsResource } from '../../dal/types'
 import { getTrack } from '../../dal/api'
+import styles from './TrackDetails.module.css'
 
 interface Props {
   selectedTrackId: string | null
@@ -21,12 +22,7 @@ export const TrackDetails = ({ selectedTrackId, selectedTrack, setSelectedTrack 
       {selectedTrackId && !selectedTrack && <p>Loading...</p>}
       {selectedTrack && (
         <>
-          <div
-            style={{
-              color: selectedTrack.id !== selectedTrackId ? '#777' : 'inherit',
-              transition: 'color .2s ease',
-            }}
-          >
+          <div className={`${selectedTrack.id !== selectedTrackId && styles.inactive}`}>
             <h3>{selectedTrack.attributes.title}</h3>
             <div>
               <h4>Lyrics</h4>

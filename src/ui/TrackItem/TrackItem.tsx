@@ -1,4 +1,5 @@
 import type { Track } from '../../dal/types'
+import styles from './TrackItem.module.css'
 
 interface Props {
   track: Track
@@ -9,7 +10,7 @@ interface Props {
 export const TrackItem = ({ track, isSelected, onTrackSelect }: Props) => {
   return (
     <li
-      style={{ border: `1px solid ${isSelected ? 'orange' : 'transparent'}` }}
+      className={`${styles.track} ${isSelected && styles.active}`}
       onClick={() => onTrackSelect(track.id)}
     >
       <div>{track.attributes.title}</div>
