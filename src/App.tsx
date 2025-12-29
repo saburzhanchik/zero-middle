@@ -17,6 +17,7 @@ type Track = {
 
 export const App = () => {
   const [tracks, setTracks] = useState<Track[] | null>(null)
+  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
@@ -30,13 +31,26 @@ export const App = () => {
   return (
     <>
       <h1>MusicFun Player</h1>
+      <button
+        type="button"
+        onClick={() => setSelectedTrackId(null)}
+      >
+        Reset selection
+      </button>
       {tracks === null && <p>Loading...</p>}
       {tracks?.length === 0 && <p>No tracks</p>}
       <ul>
         {tracks?.map((track: Track) => (
-          <li key={track.id}>
+          <li
+            key={track.id}
+            style={{ border: `1px solid ${track.id === selectedTrackId ? 'orange' : 'transparent'}` }}
+            onClick={() => setSelectedTrackId(track.id)}
+          >
             <div>{track.attributes.title}</div>
-            <audio src={track.attributes.attachments[0].url} controls></audio>
+            <audio
+              src={track.attributes.attachments[0].url}
+              controls
+            ></audio>
           </li>
         ))}
       </ul>
