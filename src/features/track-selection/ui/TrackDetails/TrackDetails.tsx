@@ -1,7 +1,7 @@
-import type { TrackDetailsResource } from '../../dal/types'
+import type { TrackDetailsResource } from '../../../../entities/track/model/types'
 import styles from './TrackDetails.module.css'
 import clsx from 'clsx'
-import { useTrack } from '../../bll/useTrack'
+import { useTrack } from '../../../../entities/track/model/useTrack'
 
 interface Props {
   selectedTrackId: string | null

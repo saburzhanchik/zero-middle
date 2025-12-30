@@ -1,6 +1,6 @@
-import type { Track } from '../../dal/types'
-import { useTracks } from '../../bll/useTracks'
-import { TrackItem } from '../TrackItem'
+import type { Track } from '../../model/types'
+import { useTracks } from '../../model/useTracks'
+import { TrackItem } from '../../../../features/track-selection/ui/TrackItem'
 
 interface Props {
   selectedTrackId: string | null

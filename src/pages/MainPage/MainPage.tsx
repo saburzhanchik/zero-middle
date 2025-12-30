@@ -1,8 +1,8 @@
-import { PageTitle } from '../PageTitle'
-import { ResetButton } from '../ResetButton'
-import { Playlist } from '../Playlist'
-import { TrackDetails } from '../TrackDetails'
-import { useTrackSelection } from '../../bll/useTrackSelection'
+import { PageTitle } from '../../shared/ui/PageTitle'
+import { ResetButton } from '../../features/track-selection/ui/ResetButton'
+import { Playlist } from '../../entities/track/ui/Playlist'
+import { TrackDetails } from '../../features/track-selection/ui/TrackDetails'
+import { useTrackSelection } from '../../features/track-selection/model/useTrackSelection'
 import styles from './MainPage.module.css'
 
 export const MainPage = () => {

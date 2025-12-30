@@ -1,4 +1,4 @@
-import type { Track } from '../../dal/types'
+import type { Track } from '../../../../entities/track/model/types'
 import styles from './TrackItem.module.css'
 import clsx from 'clsx'
 

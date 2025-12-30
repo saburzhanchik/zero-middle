@@ -1,6 +1,6 @@
-import type { Track } from '../dal/types'
+import type { Track } from './types'
 import { useEffect, useState } from 'react'
-import { getTracks } from '../dal/api'
+import { getTracks } from '../api/api'
 
 export const useTracks = () => {
   const [tracks, setTracks] = useState<Track[] | null>(null)
