@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import type { TrackDetailsResource } from '../../dal/types'
-import { getTrack } from '../../dal/api'
 import styles from './TrackDetails.module.css'
 import clsx from 'clsx'
+import { useTrack } from '../../bll/useTrack'
 
 interface Props {
   selectedTrackId: string | null
@@ -11,10 +10,7 @@ interface Props {
 }
 
 export const TrackDetails = ({ selectedTrackId, selectedTrack, setSelectedTrack }: Props) => {
-  useEffect(() => {
-    if (!selectedTrackId) return
-    getTrack(selectedTrackId).then((json) => setSelectedTrack(json.data))
-  }, [selectedTrackId])
+  const { isInactive } = useTrack(selectedTrackId, selectedTrack, setSelectedTrack)
 
   return (
     <div>
@@ -24,11 +20,9 @@ export const TrackDetails = ({ selectedTrackId, selectedTrack, setSelectedTrack 
       {selectedTrack && (
         <>
           <div
-            className={
-              clsx({
-                [styles.inactive]: selectedTrack.id !== selectedTrackId,
-              })
-            }
+            className={clsx({
+              [styles.inactive]: isInactive,
+            })}
           >
             <h3>{selectedTrack.attributes.title}</h3>
             <div>

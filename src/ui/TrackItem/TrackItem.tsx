@@ -1,5 +1,6 @@
 import type { Track } from '../../dal/types'
 import styles from './TrackItem.module.css'
+import clsx from 'clsx'
 
 interface Props {
   track: Track
@@ -10,7 +11,10 @@ interface Props {
 export const TrackItem = ({ track, isSelected, onTrackSelect }: Props) => {
   return (
     <li
-      className={`${styles.track} ${isSelected && styles.active}`}
+      className={clsx({
+        [styles.track]: true,
+        [styles.active]: isSelected,
+      })}
       onClick={() => onTrackSelect(track.id)}
     >
       <div>{track.attributes.title}</div>
